@@ -7,6 +7,6 @@ Feature: Para Bank Register Feature
 
     Examples:
       | firstName | lastName | address  | city     | state     | zipCode | phone | ssn   | username      | password | confirmPassword | message                       |
-      | christian | gomez    | provenza | medellin | antioquia | 35155   |       | 35155 | chrisgpzudeatest        | chris123 | chris123        | Welcome                       |
+      | christian | gomez    | provenza | medellin | antioquia | 35155   |       | 35155 | chrisgpzudeat        | chris123 | chris123        | Welcome                       |
       | christian | gomez    | provenza | medellin | antioquia | 35155   |       | 35155 | asdsdfasdasdf | password | password1ß      | Passwords did not match.      |
       | christian | gomez    | provenza | medellin | antioquia | 35155   |       | 35155 | john        | chris123 | chris123        | This username already exists. |
