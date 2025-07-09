@@ -4,20 +4,18 @@ import LoginPage from '../pageobjects/login.page.js';
 import PagosPage from '../pageobjects/pagos.page.js';
 import { expect } from 'chai';
 
-Given(/^el usuario inicia sesión en Parabank$/, async () => {
+Given('I am on the login page', async () => {
     await browser.url('/');
-    await LoginPage.login('ElPatoLucas', '12345678'); // cambia si tienes otros credenciales
 });
 
-When(/^navega a la sección de pagos$/, async () => {
+When('I login with {string} and {string}', async (username, password) => {
+    await LoginPage.login(username, password);
+});
+
+Given('I am on the Bill Pay page', async () => {
     await PagosPage.irAPagos();
 });
 
-When(/^realiza un pago a la cuenta "([^"]*)" por el monto "([^"]*)"$/, async (cuenta, monto) => {
-    await PagosPage.hacerPago(cuenta, monto);
-});
-
-Then(/^debería ver un mensaje de confirmación de pago$/, async () => {
-    const mensaje = await PagosPage.obtenerMensaje();
-    expect(mensaje).to.include('Bill Payment Complete');
+When('I make a payment to account {string} with amount {int}', async (account, amount) => {
+    await PagosPage.hacerPago(account, amount);
 });

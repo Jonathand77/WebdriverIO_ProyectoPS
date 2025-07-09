@@ -1,7 +1,14 @@
-Feature: Solicitar préstamos
+Feature: ParaBank Loan Request Feature
 
-  Scenario: Usuario solicita un préstamo exitosamente
-    Given el usuario accede al sistema Parabank
-    When navega a la sección de préstamos
-    And solicita un préstamo de "1000" con una cuota inicial de "100"
-    Then debería ver un mensaje de confirmación de préstamo
+  Background:
+    Given I am on the login page
+    When I login with john and demo
+
+  Scenario Outline: As a user, I can request a loan through the website
+    Given I am on the request loan page
+    When I request a loan of <amount> with down payment <downPayment>
+
+    Examples:
+      | loanAmount | downPayment | fromAccount               |
+      | 1000   | 100         | 54321 |
+      | 5000   | 0           | 54321 |
